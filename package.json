@@ -1,6 +1,6 @@
 {
   "name": "tsai",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automatically index your TypeScript library with a single command.",
   "preferGlobal": true,
   "bin": {
