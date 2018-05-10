@@ -1,5 +1,5 @@
-# tsai
-## TypeScript Auto Indexer
+# **T**ype**S**cript **A**uto **I**ndexer
+[![Build Status](https://travis-ci.org/thomas-crane/tsai.svg?branch=master)](https://travis-ci.org/thomas-crane/tsai)
 
 ## Contents
  + [Install](#install)
