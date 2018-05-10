@@ -1,14 +1,14 @@
 {
   "name": "tsai",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Automatically index your TypeScript library with a single command.",
   "preferGlobal": true,
   "bin": {
-    "tsai": "./bin/index.js" 
+    "tsai": "./bin/index.js"
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/thomas-crane/tsai/issues"
   },
-  "homepage": "https://github.com/thomas-crane/tsai#readme"
+  "homepage": "https://github.com/thomas-crane/tsai#readme",
+  "devDependencies": {
+    "mocha": "^5.1.1"
+  }
 }
