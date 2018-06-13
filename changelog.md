@@ -1,5 +1,10 @@
 # Changelog
 
+## `2.1.0`
+### Changes:
+ + Index files now export the index files of immediate sub-directories.
+ + Refactored usage of deprecated methods in tests.
+
 ## `2.0.0`
 ### Changes: 
  + Add test framework.

@@ -18,22 +18,22 @@ describe('getargs.js', function () {
     describe('#getArgs()', function () {
         it('should return the default result for no arguments.', function () {
             let args = getArgs([]);
-            assert.equal(args.quotemark, `'`);
-            assert.equal(args.overwrite, false);
-            assert.equal(args.target, process.cwd());
-            assert.deepEqual(args.exclude, ['node_modules']);
-            assert.equal(args.dryrun, false);
+            assert.strictEqual(args.quotemark, `'`);
+            assert.strictEqual(args.overwrite, false);
+            assert.strictEqual(args.target, process.cwd());
+            assert.deepStrictEqual(args.exclude, ['node_modules']);
+            assert.strictEqual(args.dryrun, false);
 
             args = getArgs(null);
-            assert.equal(args.quotemark, `'`);
-            assert.equal(args.overwrite, false);
-            assert.equal(args.target, process.cwd());
-            assert.deepEqual(args.exclude, ['node_modules']);
-            assert.equal(args.dryrun, false);
+            assert.strictEqual(args.quotemark, `'`);
+            assert.strictEqual(args.overwrite, false);
+            assert.strictEqual(args.target, process.cwd());
+            assert.deepStrictEqual(args.exclude, ['node_modules']);
+            assert.strictEqual(args.dryrun, false);
         });
         it('should enable dry run if the --dry-run flag is provided', function () {
             let args = getArgs(['--dry-run']);
-            assert.equal(args.dryrun, true);
+            assert.strictEqual(args.dryrun, true);
         });
         it('should throw an error if the path flag is included without a path', function () {
             assert.throws(getArgs.bind(getArgs, ['--path']));
@@ -43,20 +43,20 @@ describe('getargs.js', function () {
         });
         it('should use double quotemarks if the --double flag is provided', function () {
             let args = getArgs(['--double']);
-            assert.equal(args.quotemark, '"');
+            assert.strictEqual(args.quotemark, '"');
             args = getArgs(['-d']);
-            assert.equal(args.quotemark, '"');
+            assert.strictEqual(args.quotemark, '"');
         });
         it('should set overwrite to true if the --overwrite flag is provided', function () {
             let args = getArgs(['--overwrite']);
-            assert.equal(args.overwrite, true);
+            assert.strictEqual(args.overwrite, true);
             args = getArgs(['-o']);
-            assert.equal(args.overwrite, true);
+            assert.strictEqual(args.overwrite, true);
         });
         it('should use the provided --path in the target', function () {
             for (const test of TEST_PATHS) {
                 let args = getArgs(['--path', test]);
-                assert.equal(args.target, path.join(process.cwd(), ...test.split(SLASH_REGEX)));
+                assert.strictEqual(args.target, path.join(process.cwd(), ...test.split(SLASH_REGEX)));
             }
         });
         it('should throw an error if no paths are provided for --exclude', function () {
@@ -78,11 +78,11 @@ describe('getargs.js', function () {
         it('should add any paths provided after --exclude', function () {
             for (const test of TEST_PATHS) {
                 let args = getArgs(['--exclude', test]);
-                assert.deepEqual(['node_modules', path.join(...test.split(SLASH_REGEX))], args.exclude);
+                assert.deepStrictEqual(['node_modules', path.join(...test.split(SLASH_REGEX))], args.exclude);
             }
             for (let i = 0; i < TEST_PATHS - 1; i++) {
                 let args = getArgs(['-e', ...TEST_PATHS.slice(i, i + 2)]);
-                assert.deepEqual(['node_modules', ...TEST_PATHS.slice(i, i + 2)
+                assert.deepStrictEqual(['node_modules', ...TEST_PATHS.slice(i, i + 2)
                     .map((p) => path.join(...p.split(SLASH_REGEX)))], args.exclude);
             }
         });
